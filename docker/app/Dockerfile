@@ -1,7 +1,7 @@
 FROM php:8.1.4-fpm-alpine
 COPY php.ini /usr/local/etc/php/
 
-COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
