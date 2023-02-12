@@ -2,6 +2,7 @@ FROM php:8.1.4-fpm-alpine
 COPY php.ini /usr/local/etc/php/
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
+ENV PATH $PATH:/var/www/vendor/bin
 
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
