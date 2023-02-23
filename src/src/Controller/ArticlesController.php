@@ -21,9 +21,19 @@ class ArticlesController extends AppController
         $this->set(compact('articles'));
     }
 
+    /* public function view($slug = null) */
+    /* { */
+    /*     $article = $this->Articles->findBySlug($slug)->contain('Tags')->firstOrFail(); */
+    /*     $this->set(compact('article')); */
+    /* } */
+
     public function view($slug = null)
     {
-        $article = $this->Articles->findBySlug($slug)->firstOrFail();
+        // Update retrieving tags with contain()
+        $article = $this->Articles
+             ->findBySlug($slug)
+             ->contain('Tags')
+             ->firstOrFail();
         $this->set(compact('article'));
     }
 
